@@ -51,7 +51,7 @@ public class Main {
 
     private static void greetingScreen() throws IOException {
 
-        System.out.println("Welcome to CountingManager v2.0!");
+        System.out.println("***Welcome to CountingManager v2.0!***");
         System.out.println("Please type according digits for navigation");
         System.out.println();
         System.out.println("Do you already have an account?");
