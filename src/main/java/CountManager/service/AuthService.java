@@ -12,8 +12,9 @@ public class AuthService {
 
     public static boolean login(User user) throws IOException {
         // TODO поставб сюда путь своей папки data(которую я создал).
+
         // слева нажми на файл правой кнопкой выбери копи путь и выбери абсолют, а потом просто вставь в строку!
-        File file = new File("" + user.getUsername() + ".json");
+        File file = new File("C:\\Users\\PowerFull Bars\\Desktop\\JavaRush Folder\\Other projects\\CountManager\\src\\main\\java\\CountManager\\service\\AuthService.java" + user.getUsername() + ".json");
         if(file.exists()) {
             User userFromFile = MAPPER.readValue(file, User.class);
             return user.equals(userFromFile);
@@ -24,7 +25,7 @@ public class AuthService {
     public static boolean signUp(User user) throws IOException {
         // TODO поставб сюда путь своей папки data(которую я создал).
         // слева нажми на файл правой кнопкой выбери копи путь и выбери абсолют, а потом просто вставь в строку!
-        File file = new File("" + user.getUsername() + ".json");
+        File file = new File("C:\\Users\\PowerFull Bars\\Desktop\\JavaRush Folder\\Other projects\\CountManager\\src\\main\\java\\CountManager\\service\\AuthService.java" + user.getUsername() + ".json");
         if(file.createNewFile()) {
             MAPPER.writeValue(file, user);
             return true;
