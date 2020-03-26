@@ -2,10 +2,14 @@ package CountManager;
 
 import CountManager.domain.User;
 import CountManager.service.AuthService;
+import CountManager.service.ConsoleService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import static CountManager.constants.MessageConstants.*;
+import static CountManager.service.ConsoleService.readInteger;
 
 /* В будущем можно добавить возможность переключения между модами:
    1. Видеть данные за последнюю неделю/месяц
@@ -23,16 +27,8 @@ import java.io.InputStreamReader;
  * Assumes AuthService.login and AuthService.setUp are implemented correctly
 */
 public class Main {
-
-    private static final String WELCOME_MSG = "***Welcome to CountingManager v2.0!*** \nPlease type according digits for navigation";
-    private static final String AUTH_PROMPT_MSG = "Do you already have an account? \n1.Yes, login me in   2.No, sign me up   0.Exit";
-    private static final String MAIN_MENU_MSG = "*** Main Menu *** \n1.Add New Work \n2.See Recorded Work \n3.Payment Details Setup\n" +
-            "4.Calculate Revenue \n0.Log out";
-    private static final String WRONG_INPUT_MSG = "Incorrect input. Please, use digits to navigate";
-    private static final String WRONG_OPTION_MSG = "Invalid Option. Please, try again";
     private static boolean endOfProgram = false;
 
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     // Нужно сделать статическое поле answer (или же использовать @endOfProgram для этого),
     // но я пока не могу придумать как сравнивать его с 0 на протяжении программы (кроме тупой проверки)
@@ -51,7 +47,7 @@ public class Main {
     private static void greetingScreen() throws IOException {
 
         System.out.println(AUTH_PROMPT_MSG);
-        int answer = Integer.parseInt(reader.readLine());
+        int answer = readInteger();
 
         switch (answer) {
              case 0: {
@@ -82,7 +78,7 @@ public class Main {
     private static void mainMenu() throws IOException {
         System.out.println(MAIN_MENU_MSG);
 
-        switch (Integer.parseInt(reader.readLine())) {
+        switch (readInteger()) {
 
             case 0: {
                 greetingScreen();
@@ -122,11 +118,6 @@ public class Main {
 
 //    Дает флаг о закрытии программы
     private static void exitMain(){
-        try {
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         endOfProgram = true;
     }
 }

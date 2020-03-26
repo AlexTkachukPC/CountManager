@@ -18,4 +18,8 @@ public class ConsoleService {
     public static Integer readInteger() throws IOException {
         return Integer.parseInt(READER.readLine());
     }
+
+    public static BufferedReader getReader() {
+        return READER;
+    }
 }
